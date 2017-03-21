@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_dp10"
+            android:paddingLeft="@dimen/margin_dp10"
+            android:text="iOS 开发优秀博客和软件推荐"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/txt_size16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/margin_dp10"
+            android:paddingRight="@dimen/margin_dp10">
+
+            <ImageView
+                android:id="@+id/image_head"
+                android:layout_width="@dimen/item_head_width"
+                android:layout_height="@dimen/item_head_height"
+                android:layout_alignParentLeft="true"
+                android:src="@mipmap/ic_avatar_error" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="小明"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/txt_size14" />
+
+                <TextView
+                    android:id="@+id/text_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_dp5"
+                    android:text="13小时前"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/txt_size14" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_dp10"
+                android:text="Android"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/txt_size14" />
+
+        </LinearLayout>
+
+        <com.android.diy.app.ui.widget.MarkdownView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginTop="20dp"
+            android:scrollbars="none" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_dp15"
+        android:background="@color/background_white"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_dp10">
+
+        <TextView
+            android:id="@+id/text_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共收到2条回复"
+            android:textColor="@color/text_gray_light"
+            android:textSize="@dimen/txt_size14" />
+    </LinearLayout>
+
+</LinearLayout>

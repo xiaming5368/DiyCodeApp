@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.android.diy.app.utils.TimeUtils" alias="TimeUtils" />
+        <import type="com.android.diy.app.R" />
+        <variable
+            name="topicReplyBean"
+            type="com.android.diy.app.bean.TopicReplyBean" />
+        <variable
+            name="floor"
+            type="String" />
+        <variable
+            name="bodyHtml"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_white"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_dp10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/image_head"
+                android:layout_width="@dimen/item_head_width"
+                android:layout_height="@dimen/item_head_height"
+                android:layout_alignParentLeft="true"
+                android:src="@mipmap/ic_avatar_error"
+                app:imageUrl="@{topicReplyBean.user.avatar_url}"
+                app:placeHolder="@{R.mipmap.ic_avatar_error}"
+                app:error="@{R.mipmap.ic_avatar_error}" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_dp10"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/txt_size14"
+                    android:text="@{topicReplyBean.user.login}"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_dp5"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/txt_size14"
+                        android:text="@{floor}"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_dp20"
+                        android:text="@{TimeUtils.getInterval(topicReplyBean.createdAt)}"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/txt_size14" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/margin_dp20"
+                android:layout_height="@dimen/margin_dp20"
+                android:src="@mipmap/ic_reply" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{bodyHtml}"
+            android:layout_marginTop="@dimen/margin_dp5"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/txt_size14" />
+
+    </LinearLayout>
+</layout>

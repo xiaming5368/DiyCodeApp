@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="selectNode"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="topicModel"
+            type="com.android.diy.app.viewModel.TopicModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/app_toolbar"
+            layout="@layout/include_toolbar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="12dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/layout_top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/background_color"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_dp10"
+                            android:background="@color/background_white"
+                            android:onClick="@{selectNode}"
+                            android:paddingBottom="@dimen/margin_dp15"
+                            android:paddingLeft="@dimen/margin_dp15"
+                            android:paddingTop="@dimen/margin_dp15">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:text="@{topicModel.nodeName}"
+                                android:textColor="@color/text_black"
+                                android:textSize="@dimen/txt_size15" />
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_dp10"
+                            android:layout_marginTop="@dimen/margin_dp10"
+                            android:background="@color/background_white"
+                            android:orientation="horizontal"
+                            android:paddingBottom="@dimen/margin_dp15"
+                            android:paddingLeft="@dimen/margin_dp15"
+                            android:paddingTop="@dimen/margin_dp15">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:text="@string/release_topic_text_title"
+                                android:textColor="@color/text_black"
+                                android:textSize="@dimen/txt_size15" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@null"
+                                android:hint="@string/release_topic_text_title_hint"
+                                android:text="@={topicModel.topicTitle}"
+                                android:textColor="@color/text_black"
+                                android:textSize="@dimen/txt_size15" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/layout_top"
+                        android:layout_marginLeft="@dimen/margin_dp15"
+                        android:layout_marginRight="@dimen/margin_dp15"
+                        android:layout_marginTop="@dimen/margin_dp10"
+                        android:background="@null"
+                        android:gravity="top"
+                        android:hint="@string/release_topic_text_content_hint"
+                        android:text="@={topicModel.topicContent}"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/txt_size15" />
+
+                </LinearLayout>
+            </ScrollView>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="bottom|end"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/app_fab_done"
+                android:tint="@color/background_white"
+                app:backgroundTint="@color/theme_normal_color" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

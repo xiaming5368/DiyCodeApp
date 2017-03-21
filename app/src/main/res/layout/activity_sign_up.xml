@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="login"
+            type="com.android.diy.app.viewModel.LoginModel"/>
+
+        <variable
+            name="signUpAction"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="hiddenPassAction"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/windowBackground"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/app_toolbar"
+            layout="@layout/include_toolbar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_dp30">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="@dimen/logo_width"
+                android:layout_height="@dimen/logo_height"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/logo" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_dp40"
+                    android:layout_marginTop="@dimen/margin_dp30"
+                    android:background="@null"
+                    android:hint="邮箱/用户名"
+                    android:lines="1"
+                    android:text="@={login.userName}"
+                    android:textSize="@dimen/txt_size16" />
+
+                <include layout="@layout/include_line_view" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_dp20"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edit_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_dp40"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="密码"
+                        android:inputType="textPassword"
+                        android:lines="1"
+                        android:text="@={login.userPwd}"
+                        android:textSize="@dimen/txt_size16" />
+
+                    <ImageView
+                        android:id="@+id/image_eye"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:clickable="true"
+                        android:onClick="@{hiddenPassAction}"
+                        android:padding="@dimen/margin_dp5"
+                        android:src="@mipmap/ic_edited_eye" />
+                </LinearLayout>
+
+                <include layout="@layout/include_line_view" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_dp30"
+            android:layout_marginRight="@dimen/margin_dp30"
+            android:background="@drawable/app_button_red_bg"
+            android:onClick="@{signUpAction}"
+            android:text="@string/app_activity_signUp"
+            android:textColor="@color/background_white"
+            android:textSize="@dimen/txt_size16" />
+
+    </LinearLayout>
+</layout>

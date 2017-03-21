@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="signUpAction"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/app_toolbar"
+            layout="@layout/include_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_dp10"
+            android:background="@color/background_white"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/margin_dp10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_dp10"
+                android:paddingBottom="@dimen/margin_dp5"
+                android:paddingRight="@dimen/margin_dp10"
+                android:paddingTop="@dimen/margin_dp5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/setting_text_now_version"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/txt_size15" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="1.1.0"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/txt_size15" />
+            </RelativeLayout>
+
+            <include layout="@layout/include_line_view_10" />
+
+            <RelativeLayout
+                android:id="@+id/clean_cache_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="@dimen/margin_dp5"
+                android:paddingRight="@dimen/margin_dp10"
+                android:paddingTop="@dimen/margin_dp5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/setting_text_clean_cache"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/txt_size15" />
+
+                <TextView
+                    android:id="@+id/text_cache"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="1.49M"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/txt_size15" />
+            </RelativeLayout>
+
+            <include layout="@layout/include_line_view_10" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/margin_dp5"
+                android:paddingRight="@dimen/margin_dp5"
+                android:paddingTop="@dimen/margin_dp5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/setting_text_msg"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/txt_size15" />
+
+                <CheckBox
+                    android:id="@+id/setting_msg_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/app_chose_bg"
+                    android:button="@null"
+                    android:checked="true" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_dp10"
+            android:background="@color/background_white"
+            android:paddingBottom="@dimen/margin_dp15"
+            android:paddingLeft="@dimen/margin_dp15"
+            android:paddingTop="@dimen/margin_dp15">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/setting_text_check_version"
+                android:visibility="visible"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/txt_size15" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_dp10"
+            android:layout_marginRight="@dimen/margin_dp10"
+            android:layout_marginTop="@dimen/margin_dp20"
+            android:background="@drawable/app_button_red_bg"
+            android:text="退出登录"
+            android:onClick="@{signUpAction}"
+            android:textColor="@color/background_white"
+            android:textSize="@dimen/txt_size16" />
+
+    </LinearLayout>
+</layout>

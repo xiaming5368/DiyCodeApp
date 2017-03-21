@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.diy.app">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:name=".DiyCodeApplication"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar.Transparent">
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 话题 -->
+        <activity android:name=".ui.activity.TopicActivity" android:screenOrientation="portrait"
+            android:label="@string/app_activity_topic"/>
+        <!-- 发布新话题 -->
+        <activity android:name=".ui.activity.ReleaseTopicActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:label="@string/app_activity_release_topic"/>
+        <!-- NEWS详情 -->
+        <activity android:name=".ui.activity.WebViewActivity" android:screenOrientation="portrait" />
+        <!-- 选择节点 -->
+        <activity android:name=".ui.activity.SelectNodeActivity" android:screenOrientation="portrait"
+            android:label="@string/app_activity_select_node"/>
+        <!-- 我的帖子/我的收藏 -->
+        <activity android:name=".ui.activity.MyTopicActivity" android:screenOrientation="portrait" />
+        <!-- 登录 -->
+        <activity android:name=".ui.activity.LoginActivity" android:screenOrientation="portrait"
+            android:label="@string/app_activity_login"/>
+        <activity android:name=".ui.activity.SignUpActivity" android:screenOrientation="portrait"
+            android:label="@string/app_activity_signUp"/>
+        <!-- 我的 -->
+        <activity android:name=".ui.activity.MineActivity" android:screenOrientation="portrait"
+            android:label="@string/app_activity_mine"/>
+        <!-- 关于我们 -->
+        <activity android:name=".ui.activity.AboutActivity" android:screenOrientation="portrait"
+            android:label="@string/app_activity_about"/>
+        <!-- 设置 -->
+        <activity android:name=".ui.activity.SettingActivity" android:screenOrientation="portrait"
+            android:label="@string/app_activity_setting"/>
+        <!-- 搜索 -->
+        <activity android:name=".ui.activity.SearchActivity" android:screenOrientation="portrait" />
+    </application>
+
+</manifest>

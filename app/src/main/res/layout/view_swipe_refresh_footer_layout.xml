@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.android.diy.app.ui.widget.swipeLoad.SwipeLoadMoreFooterView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/load_more_footer_height_classic"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/progressbar"
+                    android:layout_width="@dimen/margin_dp25"
+                    android:layout_height="@dimen/margin_dp25"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/tvLoadMore"
+                    app:indicator="LineSpinFadeLoader"
+                    app:indicator_color="@color/text_gray_dark" />
+
+                <TextView
+                    android:id="@+id/tvLoadMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="LoadMore"
+                    android:textColor="@color/text_gray_dark"
+                    android:textSize="@dimen/txt_size14" />
+            </RelativeLayout>
+        </LinearLayout>
+    </com.android.diy.app.ui.widget.swipeLoad.SwipeLoadMoreFooterView>
+</layout>

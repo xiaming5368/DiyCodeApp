@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/app_toolbar"
+            layout="@layout/include_toolbar" />
+
+        <com.kennyc.view.MultiStateView
+            android:id="@+id/multi_stateView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:msv_animateViewChanges="true"
+            app:msv_emptyView="@layout/view_overlapping_empty_view"
+            app:msv_errorView="@layout/view_overlapping_error_view"
+            app:msv_loadingView="@layout/view_overlapping_loading_view"
+            app:msv_viewState="content">
+
+            <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+                android:id="@+id/swipeToLoadLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@id/swipe_refresh_header"
+                    layout="@layout/view_swipe_refresh_header_layout" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@id/swipe_target"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none" />
+
+                <include
+                    android:id="@id/swipe_load_more_footer"
+                    layout="@layout/view_swipe_refresh_footer_layout" />
+
+            </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+
+        </com.kennyc.view.MultiStateView>
+
+    </LinearLayout>
+
+</layout>
