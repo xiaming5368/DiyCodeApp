@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.diy.app.R;
 import com.android.diy.app.base.BaseActivity;
@@ -222,15 +223,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding>
         return true;
     }
 
-    @Override
-    public void onBackPressed() {
-        if (mDataBinding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            mDataBinding.drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
     private SearchView.OnQueryTextListener onQuerySearchView = new SearchView.OnQueryTextListener() {
         @Override
         public boolean onQueryTextSubmit(String keyWord) {
@@ -256,5 +248,32 @@ public class MainActivity extends BaseActivity<ActivityMainBinding>
             return mSearchCheck;
         }
     };
+
+    private boolean isDrawerOpen() {
+        return mDataBinding.drawerLayout.isDrawerOpen(GravityCompat.START);
+    }
+
+    private void closeDrawer() {
+        mDataBinding.drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isDrawerOpen()) {
+            closeDrawer();
+        } else {
+            long currentTime = System.currentTimeMillis();
+            if ((currentTime - touchTime) >= waitTime) {
+                Toast.makeText(this, getString(R.string.app_activity_back_exit_text), Toast.LENGTH_SHORT).show();
+                touchTime = currentTime;
+            } else {
+                finish();
+                super.onBackPressed();
+            }
+        }
+    }
+
+    long waitTime = 2000;
+    long touchTime = 0;
 
 }
