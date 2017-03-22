@@ -34,9 +34,8 @@ public class TopicFragment extends BaseFragment<FragmentTopicBinding> implements
 
     private TopicListContract.Presenter mPresenter;
     private TopicListAdapter mAdapter;
-    private int offset = 1;
+    private int offset = 0;
     private Subscription rxSubscription;
-    private List<TopicBean> mTopicList = new ArrayList<>();
 
     @Override
     protected int getLayoutResId() {
@@ -57,7 +56,8 @@ public class TopicFragment extends BaseFragment<FragmentTopicBinding> implements
         mDataBinding.swipeToLoadLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
-                offset = 1;
+                mAdapter.clear(false);
+                offset = 0;
                 mPresenter.refreshData(offset);
             }
         });
@@ -80,7 +80,8 @@ public class TopicFragment extends BaseFragment<FragmentTopicBinding> implements
                 .subscribe(new Action1<TopicDetailBean>() {
                     @Override
                     public void call(TopicDetailBean topicDetailBean) {
-                        offset = 1;
+                        mAdapter.clear(false);
+                        offset = 0;
                         mPresenter.refreshData(offset);
                     }
                 });
@@ -111,13 +112,8 @@ public class TopicFragment extends BaseFragment<FragmentTopicBinding> implements
 
     @Override
     public void getTopicListData(List<TopicBean> topicList) {
-        if (offset == 1) {
-            mTopicList.addAll(0, topicList);
-        } else {
-            mTopicList.addAll(topicList);
-        }
-        mAdapter.addTopicList(mTopicList);
-        offset++;
+        mAdapter.addTopicList(topicList);
+        offset = mAdapter.getItemCount();
     }
 
     @Override

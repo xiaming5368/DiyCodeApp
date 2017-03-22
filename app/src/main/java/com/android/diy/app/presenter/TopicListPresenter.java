@@ -46,7 +46,7 @@ public class TopicListPresenter implements TopicListContract.Presenter {
 
                     @Override
                     public void onSuccess(List<TopicBean> topicBeen) {
-                        if(offset == 1) {
+                        if(offset == 0) {
                             mView.stopRefreshing();
                         } else {
                             mView.stopLoadMore();

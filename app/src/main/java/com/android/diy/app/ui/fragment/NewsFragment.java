@@ -30,8 +30,7 @@ public class NewsFragment extends BaseFragment<FragmentTopicBinding> implements 
 
     private NewsListContract.Presenter mPresenter;
     private TopicListAdapter mAdapter;
-    private int offset = 1;
-    private List<TopicBean> mNewsList = new ArrayList<>();
+    private int offset = 0;
 
     @Override
     protected int getLayoutResId() {
@@ -52,7 +51,8 @@ public class NewsFragment extends BaseFragment<FragmentTopicBinding> implements 
         mDataBinding.swipeToLoadLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
-                offset = 1;
+                mAdapter.clear(false);
+                offset = 0;
                 mPresenter.refreshData(offset);
             }
         });
@@ -97,13 +97,8 @@ public class NewsFragment extends BaseFragment<FragmentTopicBinding> implements 
 
     @Override
     public void getNewsListData(List<TopicBean> newsList) {
-        if (offset == 1) {
-            mNewsList.addAll(0, newsList);
-        } else {
-            mNewsList.addAll(newsList);
-        }
         mAdapter.addTopicList(newsList);
-        offset++;
+        offset = mAdapter.getItemCount();
     }
 
     @Override

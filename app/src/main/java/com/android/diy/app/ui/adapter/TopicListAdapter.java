@@ -24,7 +24,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
     }
 
     public void addTopicList(List<TopicBean> topicList) {
-        mTopicList = topicList;
+        mTopicList.addAll(topicList);
         notifyDataSetChanged();
     }
 
@@ -60,6 +60,13 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
                 mOnItemClickListener.onItemClick(mTopicList.get(getAdapterPosition()).getId(),
                         mTopicList.get(getAdapterPosition()).getAddress());
             }
+        }
+    }
+
+    public void clear(boolean notify) {
+        mTopicList.clear();
+        if (notify) {
+            notifyDataSetChanged();
         }
     }
 

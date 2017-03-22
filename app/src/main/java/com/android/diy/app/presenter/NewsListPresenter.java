@@ -41,7 +41,7 @@ public class NewsListPresenter implements NewsListContract.Presenter {
 
             @Override
             public void onSuccess(List<TopicBean> newsBeen) {
-                if(offset == 1) {
+                if(offset == 0) {
                     mView.stopRefreshing();
                 } else {
                     mView.stopLoadMore();

@@ -32,11 +32,9 @@ public class MyTopicActivity extends BaseActivity<ActivityMyTopicBinding>
     public static final int TYPE_CREATE = 1;
     public static final int TYPE_FAVORITE = 2;
     private MyTopicContract.Presenter mPresenter;
-    private int offset = 1;
+    private int offset, type = 0;
     private String loginName = "";
-    private int type = 0;
     private TopicListAdapter mAdapter;
-    private List<TopicBean> mTopicList = new ArrayList<>();
 
     @Override
     protected int getLayoutResId() {
@@ -61,7 +59,8 @@ public class MyTopicActivity extends BaseActivity<ActivityMyTopicBinding>
         mDataBinding.swipeToLoadLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
-                offset = 1;
+                mAdapter.clear(false);
+                offset = 0;
                 postTopics();
             }
         });
@@ -119,18 +118,13 @@ public class MyTopicActivity extends BaseActivity<ActivityMyTopicBinding>
     @Override
     public void getUserCreateTopics(List<TopicBean> topicList) {
         mAdapter.addTopicList(topicList);
-        offset++;
+        offset = mAdapter.getItemCount();
     }
 
     @Override
     public void getUserFavoriteTopics(List<TopicBean> topicList) {
-        if (offset == 1) {
-            mTopicList.addAll(0, topicList);
-        } else {
-            mTopicList.addAll(topicList);
-        }
-        mAdapter.addTopicList(mTopicList);
-        offset++;
+        mAdapter.addTopicList(topicList);
+        offset = mAdapter.getItemCount();
     }
 
     @Override
