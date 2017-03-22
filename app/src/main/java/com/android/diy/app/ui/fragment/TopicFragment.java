@@ -19,7 +19,9 @@ import com.android.diy.app.ui.widget.DividerListItemDecoration;
 import com.android.diy.app.utils.RxBus;
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
+import com.jiongbull.jlog.JLog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Subscription;
@@ -34,6 +36,7 @@ public class TopicFragment extends BaseFragment<FragmentTopicBinding> implements
     private TopicListAdapter mAdapter;
     private int offset = 1;
     private Subscription rxSubscription;
+    private List<TopicBean> mTopicList = new ArrayList<>();
 
     @Override
     protected int getLayoutResId() {
@@ -54,7 +57,6 @@ public class TopicFragment extends BaseFragment<FragmentTopicBinding> implements
         mDataBinding.swipeToLoadLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mAdapter.clear(false);
                 offset = 1;
                 mPresenter.refreshData(offset);
             }
@@ -78,7 +80,6 @@ public class TopicFragment extends BaseFragment<FragmentTopicBinding> implements
                 .subscribe(new Action1<TopicDetailBean>() {
                     @Override
                     public void call(TopicDetailBean topicDetailBean) {
-                        mAdapter.clear(false);
                         offset = 1;
                         mPresenter.refreshData(offset);
                     }
@@ -110,7 +111,12 @@ public class TopicFragment extends BaseFragment<FragmentTopicBinding> implements
 
     @Override
     public void getTopicListData(List<TopicBean> topicList) {
-        mAdapter.addTopicList(topicList);
+        if (offset == 1) {
+            mTopicList.addAll(0, topicList);
+        } else {
+            mTopicList.addAll(topicList);
+        }
+        mAdapter.addTopicList(mTopicList);
         offset++;
     }
 

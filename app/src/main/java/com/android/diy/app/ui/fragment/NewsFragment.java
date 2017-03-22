@@ -19,6 +19,7 @@ import com.android.diy.app.ui.widget.DividerListItemDecoration;
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +31,7 @@ public class NewsFragment extends BaseFragment<FragmentTopicBinding> implements 
     private NewsListContract.Presenter mPresenter;
     private TopicListAdapter mAdapter;
     private int offset = 1;
+    private List<TopicBean> mNewsList = new ArrayList<>();
 
     @Override
     protected int getLayoutResId() {
@@ -50,7 +52,6 @@ public class NewsFragment extends BaseFragment<FragmentTopicBinding> implements 
         mDataBinding.swipeToLoadLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mAdapter.clear(false);
                 offset = 1;
                 mPresenter.refreshData(offset);
             }
@@ -96,6 +97,11 @@ public class NewsFragment extends BaseFragment<FragmentTopicBinding> implements 
 
     @Override
     public void getNewsListData(List<TopicBean> newsList) {
+        if (offset == 1) {
+            mNewsList.addAll(0, newsList);
+        } else {
+            mNewsList.addAll(newsList);
+        }
         mAdapter.addTopicList(newsList);
         offset++;
     }

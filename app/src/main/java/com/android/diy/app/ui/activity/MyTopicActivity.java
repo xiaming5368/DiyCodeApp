@@ -18,6 +18,7 @@ import com.android.diy.app.utils.PrefUtil;
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,6 +36,7 @@ public class MyTopicActivity extends BaseActivity<ActivityMyTopicBinding>
     private String loginName = "";
     private int type = 0;
     private TopicListAdapter mAdapter;
+    private List<TopicBean> mTopicList = new ArrayList<>();
 
     @Override
     protected int getLayoutResId() {
@@ -59,7 +61,6 @@ public class MyTopicActivity extends BaseActivity<ActivityMyTopicBinding>
         mDataBinding.swipeToLoadLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mAdapter.clear(false);
                 offset = 1;
                 postTopics();
             }
@@ -123,7 +124,12 @@ public class MyTopicActivity extends BaseActivity<ActivityMyTopicBinding>
 
     @Override
     public void getUserFavoriteTopics(List<TopicBean> topicList) {
-        mAdapter.addTopicList(topicList);
+        if (offset == 1) {
+            mTopicList.addAll(0, topicList);
+        } else {
+            mTopicList.addAll(topicList);
+        }
+        mAdapter.addTopicList(mTopicList);
         offset++;
     }
 

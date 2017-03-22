@@ -24,7 +24,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
     }
 
     public void addTopicList(List<TopicBean> topicList) {
-        mTopicList.addAll(topicList);
+        mTopicList = topicList;
         notifyDataSetChanged();
     }
 
@@ -45,13 +45,6 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
     @Override
     public int getItemCount() {
         return mTopicList.size();
-    }
-
-    public void clear(boolean notify) {
-        mTopicList.clear();
-        if (notify) {
-            notifyDataSetChanged();
-        }
     }
 
     class TopicViewHolder extends DataBindingRecyclerViewHolder<ListTopicItemBinding> implements View.OnClickListener {
