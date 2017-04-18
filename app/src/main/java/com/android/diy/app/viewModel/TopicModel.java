@@ -4,6 +4,8 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.ObservableField;
 
+import com.android.diy.app.BR;
+
 /**
  * Created by cheng on 2017/3/8.
  */
@@ -20,7 +22,7 @@ public class TopicModel extends BaseObservable {
 
     public void setNodeName(String nodeName) {
         this.nodeName = nodeName;
-//        notifyPropertyChanged(BR.nodeName);
+        notifyPropertyChanged(BR.nodeName);
     }
 
 }
